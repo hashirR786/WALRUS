@@ -1,0 +1,46 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import connectDB from './config/db.js';
+import taskRoutes from './routes/taskRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+
+// Load environment variables
+dotenv.config();
+
+// Connect to Database
+connectDB();
+
+const app = express();
+
+// Middleware
+app.use(cors({
+  origin: '*', // Allow all origins for simplicity in development, can lock down in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+
+// Routes
+app.use('/api', taskRoutes);
+app.use('/api/auth', authRoutes);
+
+// Root path handler for validation/testing
+app.get('/', (req, res) => {
+  res.send('Smart To-Do Assistant API is running.');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: 'Something went wrong!',
+    error: err.message,
+  });
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+});
