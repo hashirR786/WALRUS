@@ -4,33 +4,34 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
   /* Light Theme variables */
-  --bg-app: #f5f7fb;
+  --bg-app: #f7f5f0; /* Warm Sand / Alabaster Beige */
   --bg-card: #ffffff;
-  --bg-card-hover: #fafbfc;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --border-color: #e2e8f0;
+  --bg-card-hover: #f0ede6; /* Soft warm beige hover */
+  --text-primary: #1e1e1c; /* Deep Charcoal Black */
+  --text-secondary: #6b6860; /* Warm Grey */
+  --text-muted: #b5b0a3;
+  --border-color: #e7e3d7; /* Warm light beige border */
   
-  --primary: #6366f1; /* Indigo */
-  --primary-hover: #4f46e5;
-  --primary-light: rgba(99, 102, 241, 0.1);
-  --primary-rgb: 99, 102, 241;
+  --primary: #8c826b; /* Muted Beige / Khaki Taupe */
+  --primary-hover: #6e6653;
+  --primary-light: rgba(140, 130, 107, 0.08);
+  --primary-rgb: 140, 130, 107;
   
-  --secondary: #0ea5e9; /* Sky Blue */
-  --secondary-hover: #0284c7;
+  --secondary: #4a4a46; /* Dark Slate Grey */
+  --secondary-hover: #333330;
+  --secondary-rgb: 74, 74, 70;
   
-  --success: #10b981;
-  --success-light: rgba(16, 185, 129, 0.1);
-  --danger: #ef4444;
-  --danger-light: rgba(239, 68, 68, 0.1);
-  --warning: #f59e0b;
-  --warning-light: rgba(245, 158, 11, 0.1);
+  --success: #5f7560; /* Muted Olive Green */
+  --success-light: rgba(95, 117, 96, 0.1);
+  --danger: #b05a5a; /* Terracotta Red */
+  --danger-light: rgba(176, 90, 90, 0.1);
+  --warning: #d99f59; /* Muted Ochre */
+  --warning-light: rgba(217, 159, 89, 0.1);
   
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 12px 30px -4px rgba(99, 102, 241, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
-  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.15);
+  --shadow-sm: 0 1px 3px rgba(30, 30, 28, 0.04);
+  --shadow-md: 0 4px 20px -2px rgba(30, 30, 28, 0.05), 0 2px 8px -1px rgba(30, 30, 28, 0.02);
+  --shadow-lg: 0 12px 30px -4px rgba(140, 130, 107, 0.08), 0 4px 12px -2px rgba(30, 30, 28, 0.02);
+  --shadow-glow: 0 0 25px rgba(140, 130, 107, 0.12);
   
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-border: rgba(255, 255, 255, 0.4);
@@ -45,36 +46,37 @@
 
 [data-theme="dark"] {
   /* Dark Theme variables */
-  --bg-app: #0b0f19; /* Very dark blue-grey */
-  --bg-card: #151c2c; /* Card bg */
-  --bg-card-hover: #1c263c;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
-  --border-color: #222d44;
+  --bg-app: #181816; /* Deep Charcoal Grey */
+  --bg-card: #22221f; /* Dark Grey Slate card */
+  --bg-card-hover: #2c2c28;
+  --text-primary: #eae6db; /* Soft Warm Beige Text */
+  --text-secondary: #9a9588; /* Muted Warm Grey */
+  --text-muted: #5a574e;
+  --border-color: #2f2f2b;
   
-  --primary: #818cf8; /* Indigo 400 */
-  --primary-hover: #6366f1;
-  --primary-light: rgba(129, 140, 248, 0.15);
-  --primary-rgb: 129, 140, 248;
+  --primary: #d4cca3; /* Soft Muted Beige Accent */
+  --primary-hover: #c4bc93;
+  --primary-light: rgba(212, 204, 163, 0.12);
+  --primary-rgb: 212, 204, 163;
   
-  --secondary: #38bdf8; /* Sky Blue 400 */
-  --secondary-hover: #0ea5e9;
+  --secondary: #8c826b; /* Warm Muted Taupe */
+  --secondary-hover: #766d59;
+  --secondary-rgb: 140, 130, 107;
   
-  --success: #34d399;
-  --success-light: rgba(52, 211, 153, 0.15);
-  --danger: #f87171;
-  --danger-light: rgba(248, 113, 113, 0.15);
-  --warning: #fbbf24;
-  --warning-light: rgba(251, 191, 36, 0.15);
+  --success: #879a88; /* Muted Olive Green */
+  --success-light: rgba(135, 154, 136, 0.15);
+  --danger: #d08b8b; /* Soft Terracotta Red */
+  --danger-light: rgba(208, 139, 139, 0.15);
+  --warning: #e3bc8f; /* Muted Ochre */
+  --warning-light: rgba(227, 188, 143, 0.15);
   
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.3), 0 2px 8px -1px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 15px 35px -5px rgba(0, 0, 0, 0.4), 0 5px 15px -3px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 30px rgba(129, 140, 248, 0.2);
+  --shadow-glow: 0 0 30px rgba(212, 204, 163, 0.15);
   
-  --glass-bg: rgba(21, 28, 44, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.04);
+  --glass-bg: rgba(34, 34, 31, 0.85); /* Warm Carbon Grey Glass */
+  --glass-border: rgba(255, 255, 255, 0.03);
 }
 
 /* Reset and Globals */
@@ -495,9 +497,9 @@ h2 {
 }
 
 .ai-badge {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(14, 165, 233, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15) 0%, rgba(var(--secondary-rgb), 0.15) 100%);
   color: var(--primary);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
   padding: 0.15rem 0.5rem;
   font-size: 0.7rem;
   border-radius: 50px;
@@ -507,7 +509,7 @@ h2 {
 }
 
 .insight-card {
-  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(14, 165, 233, 0.05) 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(var(--secondary-rgb), 0.05) 100%);
   border: 1px solid rgba(var(--primary-rgb), 0.15);
   border-radius: var(--radius-md);
   padding: 1rem;
