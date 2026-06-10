@@ -18,7 +18,7 @@ export const getTasks = async (req, res) => {
 // @access  Private
 export const createTask = async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, dueDate, priority, category } = req.body;
     if (!title || !title.trim()) {
       return res.status(400).json({ message: 'Task title is required' });
     }
@@ -26,6 +26,9 @@ export const createTask = async (req, res) => {
     const newTask = await Task.create({
       user: req.user.id,
       title: title.trim(),
+      dueDate: dueDate || null,
+      priority: priority || 'medium',
+      category: category || 'general',
     });
 
     res.status(201).json(newTask);
@@ -40,11 +43,17 @@ export const createTask = async (req, res) => {
 export const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, completed } = req.body;
+    const { title, completed, dueDate, priority, category } = req.body;
 
     const updateData = {};
     if (title !== undefined) updateData.title = title.trim();
-    if (completed !== undefined) updateData.completed = completed;
+    if (completed !== undefined) {
+      updateData.completed = completed;
+      updateData.completedAt = completed ? new Date() : null;
+    }
+    if (dueDate !== undefined) updateData.dueDate = dueDate || null;
+    if (priority !== undefined) updateData.priority = priority;
+    if (category !== undefined) updateData.category = category;
 
     // findOneAndUpdate ensures the task belongs to the authenticated user
     const updatedTask = await Task.findOneAndUpdate(

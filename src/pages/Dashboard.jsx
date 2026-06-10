@@ -3,6 +3,7 @@ import TaskInput from '../components/TaskInput';
 import TaskList from '../components/TaskList';
 import Suggestions from '../components/Suggestions';
 import Insights from '../components/Insights';
+import CalendarView from '../components/CalendarView';
 import { Loader2 } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -61,7 +62,7 @@ const Dashboard = ({ token, activeTab, addToast }) => {
   };
 
   // API Call: Add new task
-  const handleAddTask = async (title) => {
+  const handleAddTask = async (title, details = {}) => {
     try {
       const res = await fetch(`${API_BASE}/tasks`, {
         method: 'POST',
@@ -69,7 +70,12 @@ const Dashboard = ({ token, activeTab, addToast }) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ title }),
+        body: JSON.stringify({ 
+          title,
+          priority: details.priority || 'medium',
+          category: details.category || 'general',
+          dueDate: details.dueDate || null
+        }),
       });
       if (!res.ok) {
         const errorData = await res.json();
@@ -173,6 +179,20 @@ const Dashboard = ({ token, activeTab, addToast }) => {
       });
     }
   };
+
+  if (activeTab === 'calendar') {
+    return (
+      <main>
+        <CalendarView
+          tasks={tasks}
+          onToggleComplete={handleToggleComplete}
+          onDeleteTask={handleDeleteTask}
+          onUpdateTask={handleUpdateTask}
+          loading={loadingTasks}
+        />
+      </main>
+    );
+  }
 
   if (activeTab === 'insights') {
     return (

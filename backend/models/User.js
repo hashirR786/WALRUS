@@ -18,6 +18,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required'],
   },
+  avatar: {
+    type: String,
+    default: 'walrus_classic',
+  },
+  dailyGoal: {
+    type: Number,
+    default: 3,
+  },
+  focusCategory: {
+    type: String,
+    default: 'general',
+  },
   createdAt: {
     type: Date,
     default: Date.now,

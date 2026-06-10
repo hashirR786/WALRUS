@@ -23,13 +23,12 @@ const Suggestions = ({ suggestions, loading, onRefresh, onAddSuggestedTask }) =>
       <div className="ai-header">
         <h3 className="ai-title">
           <Sparkles size={18} />
-          <span>Smart Suggestions</span>
-          <span className="ai-badge">Groq Llama 3</span>
+          <span>Walrus's Suggestions</span>
         </h3>
-        <button 
-          className="btn-icon" 
-          onClick={onRefresh} 
-          disabled={loading} 
+        <button
+          className="btn-icon"
+          onClick={onRefresh}
+          disabled={loading}
           title="Refresh AI suggestions"
           style={{ animation: loading ? 'rotate 2s linear infinite' : 'none' }}
         >
@@ -52,8 +51,8 @@ const Suggestions = ({ suggestions, loading, onRefresh, onAddSuggestedTask }) =>
                 {missingTasks.map((task, idx) => (
                   <div key={`missing-${idx}`} className="suggestion-item">
                     <span className="suggestion-text">{task}</span>
-                    <button 
-                      className="btn-icon" 
+                    <button
+                      className="btn-icon"
                       onClick={() => onAddSuggestedTask(task)}
                       title="Add to my list"
                     >
@@ -75,8 +74,8 @@ const Suggestions = ({ suggestions, loading, onRefresh, onAddSuggestedTask }) =>
                 suggestedTasks.map((task, idx) => (
                   <div key={`suggested-${idx}`} className="suggestion-item">
                     <span className="suggestion-text">{task}</span>
-                    <button 
-                      className="btn-icon" 
+                    <button
+                      className="btn-icon"
                       onClick={() => onAddSuggestedTask(task)}
                       title="Add to my list"
                     >

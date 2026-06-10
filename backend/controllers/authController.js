@@ -37,6 +37,9 @@ export const registerUser = async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
+        avatar: user.avatar,
+        dailyGoal: user.dailyGoal,
+        focusCategory: user.focusCategory,
         token: generateToken(user._id),
       });
     } else {
@@ -66,6 +69,9 @@ export const loginUser = async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
+        avatar: user.avatar,
+        dailyGoal: user.dailyGoal,
+        focusCategory: user.focusCategory,
         token: generateToken(user._id),
       });
     } else {
@@ -73,5 +79,56 @@ export const loginUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: 'Server error during login', error: error.message });
+  }
+};
+
+// @desc    Get user profile
+// @route   GET /api/auth/profile
+// @access  Private
+export const getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password');
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error retrieving profile', error: error.message });
+  }
+};
+
+// @desc    Update user profile settings
+// @route   PUT /api/auth/profile
+// @access  Private
+export const updateUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      user.username = req.body.username || user.username;
+      if (req.body.avatar !== undefined) user.avatar = req.body.avatar;
+      if (req.body.dailyGoal !== undefined) user.dailyGoal = req.body.dailyGoal;
+      if (req.body.focusCategory !== undefined) user.focusCategory = req.body.focusCategory;
+
+      if (req.body.password) {
+        user.password = req.body.password;
+      }
+
+      const updatedUser = await user.save();
+
+      res.status(200).json({
+        _id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        avatar: updatedUser.avatar,
+        dailyGoal: updatedUser.dailyGoal,
+        focusCategory: updatedUser.focusCategory,
+      });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error updating profile', error: error.message });
   }
 };
