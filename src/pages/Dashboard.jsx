@@ -5,8 +5,7 @@ import Suggestions from '../components/Suggestions';
 import Insights from '../components/Insights';
 import CalendarView from '../components/CalendarView';
 import { Loader2 } from 'lucide-react';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+import { API_BASE } from '../config';
 
 const Dashboard = ({ token, activeTab, addToast }) => {
   const [tasks, setTasks] = useState([]);

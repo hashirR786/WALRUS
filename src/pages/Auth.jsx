@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Lock, User as UserIcon, Send, Sparkles, Loader2 } from 'lucide-react';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+import { API_BASE } from '../config';
 
 const Auth = ({ onAuthSuccess, addToast }) => {
   const [isLogin, setIsLogin] = useState(true);

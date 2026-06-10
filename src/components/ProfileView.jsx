@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { User as UserIcon, Camera, Trophy, Sparkles, CheckSquare, Target, Settings, Flame, Loader2 } from 'lucide-react';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+import { API_BASE } from '../config';
 
 const ProfileView = ({ token, user, onUpdateUser, addToast }) => {
   const [isEditing, setIsEditing] = useState(false);

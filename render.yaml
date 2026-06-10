@@ -31,4 +31,3 @@ services:
           name: walrus-backend
           type: web
           property: host
-        value: https://${host}/api
