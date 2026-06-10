@@ -1,0 +1,35 @@
+services:
+  # 1. Express Node.js Backend Service
+  - type: web
+    name: walrus-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+        placeholder: "Enter your MongoDB Atlas Connection String"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+        placeholder: "Enter your Groq API Key (gsk_...)"
+
+  # 2. React Frontend Static Site Service
+  - type: web
+    name: walrus-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: walrus-backend
+          type: web
+          property: host
+        value: https://${host}/api
