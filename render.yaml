@@ -20,10 +20,11 @@ services:
         placeholder: "Enter your Groq API Key (gsk_...)"
 
   # 2. React Frontend Static Site Service
-  - type: static
+  - type: web
     name: walrus-frontend
+    runtime: static
     buildCommand: npm install && npm run build
-    publishDir: dist
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
         fromService:
